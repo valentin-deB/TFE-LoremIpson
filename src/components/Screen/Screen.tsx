@@ -1,5 +1,7 @@
 import React from "react";
 import "./Screen.scss";
+import Test from "../Apps/Test/Test";
+import Calculator from "../Apps/Calculator/Calculator";
 
 var style:string = "modernMac";
 
@@ -97,6 +99,7 @@ const Screen = () => {
             </ul>
           </div>
           <div className="o-container js-container">
+            <Calculator windowId='1' currentStyle='ModernMac'/>
             <div className="c-desktop js-desktop">
               <div
                 className="c-desktop__element js-desktop__element"
