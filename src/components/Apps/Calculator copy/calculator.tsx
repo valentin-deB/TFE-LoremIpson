@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Calculator.scss";
 import "./styles/style-modernMac.scss";
-import Window from "../Window/Window";
+import Window from "../App/App";
 import icon from "./assets/calculator.png";
 
 interface CalculatorProps {
@@ -13,11 +13,22 @@ const Calculator: React.FC<CalculatorProps> = ({
   windowId,
   currentStyle,
 }) => {
+  // App state
   const [isMinimized, setIsMinimized] = useState(true);
+
+  //App functions
+
+  const toggleMinimized = () => {
+    setIsMinimized(!isMinimized);
+  };
+
+  // Calculator state
   const [currentOperand, setCurrentOperand] = useState("");
   const [previousOperand, setPreviousOperand] = useState("");
   const [operation, setOperation] = useState<string | undefined>(undefined);
 
+
+  //Calculator functions
   useEffect(() => {
     updateDisplay();
   }, [currentOperand, previousOperand, operation]);
@@ -100,10 +111,6 @@ const Calculator: React.FC<CalculatorProps> = ({
     }
   };
 
-  const toggleMinimized = () => {
-    setIsMinimized(!isMinimized);
-  };
-
   const handleNumberClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement;
     appendNumber(target.innerText);
@@ -130,6 +137,7 @@ const Calculator: React.FC<CalculatorProps> = ({
   return (
     <>
     {isMinimized ? (
+      // Minimized app
       <div
         className="c-dock__app js-dock__app"
         data-application-name="Calculator"
@@ -138,6 +146,14 @@ const Calculator: React.FC<CalculatorProps> = ({
         <img className="c-dock__icon js-dock__icon" src={icon} />
       </div>
     ) : (
+      <>
+      <div
+        className="c-dock__app js-dock__app"
+        data-application-name="Calculator"
+        onClick={toggleMinimized}
+      >
+        <img className="c-dock__icon js-dock__icon" src={icon} />
+      </div>
       <Window>
         <div className="c-calculator">
           <div className="c-calculator__screen">
@@ -168,6 +184,7 @@ const Calculator: React.FC<CalculatorProps> = ({
           <button className="c-calculator__btn c-span--two c-calculator__btn--equals" onClick={handleEqualsClick}>=</button>
         </div>
       </Window>
+      </>
     )}
     </>
   );

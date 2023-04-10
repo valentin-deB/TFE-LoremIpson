@@ -1,23 +1,48 @@
-import React from 'react';
-import './Window.scss';
-import './styles/style-modernMac.scss'
+import React, { useState } from 'react';
+import './App.scss';
+import './styles/style-modernMac.scss';
 
 interface WindowProps {
-  children: React.ReactNode;
+  children: React.ReactElement;
+  icon: React.ReactNode;
+  name: string;
 }
 
-const Window: React.FC<WindowProps> = ({ children }) => {
+const App: React.FC<WindowProps> = ({ children, icon, name }) => {
   let wrappedChild;
 
-  if (React.isValidElement(children)) {
-    wrappedChild = (
-      <div className="c-window" data-type="window" data-drag="draggable-dragger">
+  // App state
+  const [isMinimized, setIsMinimized] = useState(true);
+
+  //App functions
+
+  const openApp = () => {
+    setIsMinimized(false);
+  };
+
+  const toggleMinimized = () => {
+    setIsMinimized(!isMinimized);
+  };
+
+  return (
+    <>
+    {isMinimized ? (
+      // Minimized app
+      <div
+        className="c-dock__app js-dock__app"
+        data-application-name={name}
+        onClick={openApp}
+      >
+        {icon}
+      </div>
+    ) : (
+      <div className={"c-window " + name} data-type="window" data-drag="draggable-dragger">
           <div className="c-window__head js-window__head">
             <ul className="c-window__controls">
               <li>
                 <button
                   className="c-window__control c-window__control--quit"
-                  onClick={() => children.props.onQuit()}
+                  onClick={toggleMinimized}
                 >
                   <svg   
                     className="c-window__control-icon"
@@ -85,15 +110,9 @@ const Window: React.FC<WindowProps> = ({ children }) => {
             {React.cloneElement(children)}
           </div>
       </div>
-    );
-  } else {
-    wrappedChild = 
-    <div className="c-window" data-type="window" data-drag="draggable-dragger" >
-      <h1>Children app in not valid</h1>
-    </div>;
-  }
-
-  return <>{wrappedChild}</>;
+    )}
+    </>
+  );
 };
 
-export default Window;
+export default App;

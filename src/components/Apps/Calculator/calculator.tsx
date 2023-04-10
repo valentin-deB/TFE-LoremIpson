@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Calculator.scss";
 import "./styles/style-modernMac.scss";
-import Window from "../Window/Window";
+import Window from "../App/App";
 import icon from "./assets/calculator.png";
+import App from "../App/App";
 
 interface CalculatorProps {
   windowId: string;
@@ -13,14 +14,8 @@ const Calculator: React.FC<CalculatorProps> = ({
   windowId,
   currentStyle,
 }) => {
-  // App state
-  const [isMinimized, setIsMinimized] = useState(true);
-
-  //App functions
-
-  const toggleMinimized = () => {
-    setIsMinimized(!isMinimized);
-  };
+  const Icon = <img src={icon} className="c-dock__icon js-dock__icon" alt="App Icon" />;
+  const Name = "Calculator";
 
   // Calculator state
   const [currentOperand, setCurrentOperand] = useState("");
@@ -133,28 +128,10 @@ const Calculator: React.FC<CalculatorProps> = ({
     deleteCharacter();
   };
 
+  //App render
 
-  return (
-    <>
-    {isMinimized ? (
-      // Minimized app
-      <div
-        className="c-dock__app js-dock__app"
-        data-application-name="Calculator"
-        onClick={toggleMinimized}
-      >
-        <img className="c-dock__icon js-dock__icon" src={icon} />
-      </div>
-    ) : (
-      <>
-      <div
-        className="c-dock__app js-dock__app"
-        data-application-name="Calculator"
-        onClick={toggleMinimized}
-      >
-        <img className="c-dock__icon js-dock__icon" src={icon} />
-      </div>
-      <Window>
+  return (    
+      <App icon={Icon} name={Name}>
         <div className="c-calculator">
           <div className="c-calculator__screen">
             <div data-previous-operand className="c-screen__previous">
@@ -183,10 +160,7 @@ const Calculator: React.FC<CalculatorProps> = ({
           <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>.</button>
           <button className="c-calculator__btn c-span--two c-calculator__btn--equals" onClick={handleEqualsClick}>=</button>
         </div>
-      </Window>
-      </>
-    )}
-    </>
+      </App>
   );
 };
 
