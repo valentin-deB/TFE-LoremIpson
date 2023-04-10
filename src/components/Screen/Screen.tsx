@@ -1,6 +1,6 @@
 import React from "react";
 import "./Screen.scss";
-import Test from "../Apps/Test/Test";
+import "./style/style-modernMac.scss";
 import Calculator from "../Apps/Calculator/Calculator";
 
 var style:string = "modernMac";
@@ -16,7 +16,7 @@ const Screen = () => {
                 <button className="c-menu-bar__btn js-menu-bar__logo">
                   <img
                     className="c-menu-bar__icon"
-                    src={`assets/{style}/menuBarre/logoLoremIpson.png`}
+                    src={`assets/${style}/menuBarre/logoLoremIpson.png`}
                     alt="logoLoremIpson"
                   />
                 </button>
@@ -57,7 +57,7 @@ const Screen = () => {
                 <button className="c-menu-bar__btn" data-menu-bar="Wifi">
                   <img
                     className="c-menu-bar__icon"
-                    src={`assets/{style}/menuBarre/wifiIcon.png`}
+                    src={`assets/${style}/menuBarre/wifiIcon.png`}
                     alt="icon Wifi"
                   />
                 </button>
@@ -66,7 +66,7 @@ const Screen = () => {
                 <button className="c-menu-bar__btn" data-menu-bar="Search">
                   <img
                     className="c-menu-bar__icon"
-                    src={`assets/{style}/menuBarre/searchIcon.png`}
+                    src={`assets/${style}/menuBarre/searchIcon.png`}
                     alt="icon Search"
                   />
                 </button>
@@ -78,7 +78,7 @@ const Screen = () => {
                 >
                   <img
                     className="c-menu-bar__icon"
-                    src={`assets/{style}/menuBarre/controlCenterIcon.png`}
+                    src={`assets/${style}/menuBarre/controlCenterIcon.png`}
                     alt="icon Control center"
                   />
                 </button>
@@ -112,7 +112,7 @@ const Screen = () => {
                 <div className="c-desktop__icon js-desktop__icon">
                   <img
                     className="c-desktop__icon-img js-desktop__icon-img o-fluidimage"
-                    src={`assets/{style}/desktopIcons/folder.png`}
+                    src={`assets/${style}/desktopIcons/folder.png`}
                     alt="Folder"
                   />
                 </div>
@@ -164,7 +164,7 @@ const Screen = () => {
                 <div className="c-desktop__icon js-desktop__icon">
                   <img
                     className="c-desktop__icon-img js-desktop__icon-img o-fluidimage"
-                    src={`assets/{style}/desktopIcons/folder.png`}
+                    src={`assets/${style}/desktopIcons/folder.png`}
                     alt="Folder"
                   />
                 </div>
@@ -180,7 +180,7 @@ const Screen = () => {
               >
                 <img
                   className="c-dock__icon js-dock__icon"
-                  src={`assets/{style}/dockIcons/finder.png`}
+                  src={`assets/${style}/dockIcons/finder.png`}
                 />
               </div>
               <div
@@ -189,7 +189,7 @@ const Screen = () => {
               >
                 <img
                   className="c-dock__icon js-dock__icon"
-                  src={`assets/{style}/dockIcons/preferences.png`}
+                  src={`assets/${style}/dockIcons/preferences.png`}
                 />
               </div>
               <div
@@ -198,7 +198,7 @@ const Screen = () => {
               >
                 <img
                   className="c-dock__icon js-dock__icon"
-                  src={`assets/{style}/dockIcons/appStore.png`}
+                  src={`assets/${style}/dockIcons/appStore.png`}
                 />
               </div>
               <div
@@ -207,7 +207,7 @@ const Screen = () => {
               >
                 <img
                   className="c-dock__icon js-dock__icon"
-                  src={`assets/{style}/dockIcons/camera.png`}
+                  src={`assets/${style}/dockIcons/camera.png`}
                 />
               </div>
               <div
@@ -216,7 +216,7 @@ const Screen = () => {
               >
                 <img
                   className="c-dock__icon js-dock__icon"
-                  src={`assets/{style}/dockIcons/photo.png`}
+                  src={`assets/${style}/dockIcons/photo.png`}
                 />
               </div>
               <div
@@ -225,7 +225,7 @@ const Screen = () => {
               >
                 <img
                   className="c-dock__icon js-dock__icon"
-                  src={`assets/{style}/dockIcons/mail.png`}
+                  src={`assets/${style}/dockIcons/mail.png`}
                 />
               </div>
               <div
@@ -234,7 +234,7 @@ const Screen = () => {
               >
                 <img
                   className="c-dock__icon js-dock__icon"
-                  src={`assets/{style}/dockIcons/calculator.png`}
+                  src={`assets/${style}/dockIcons/calculator.png`}
                 />
               </div>
               <div
@@ -243,7 +243,7 @@ const Screen = () => {
               >
                 <img
                   className="c-dock__icon js-dock__icon"
-                  src={`assets/{style}/dockIcons/chrome.png`}
+                  src={`assets/${style}/dockIcons/chrome.png`}
                 />
               </div>
               <div
@@ -252,7 +252,7 @@ const Screen = () => {
               >
                 <img
                   className="c-dock__icon js-dock__icon"
-                  src={`assets/{style}/dockIcons/figma.png`}
+                  src={`assets/${style}/dockIcons/figma.png`}
                 />
               </div>
             </div>
@@ -263,7 +263,7 @@ const Screen = () => {
               >
                 <img
                   className="c-dock__icon js-dock__icon"
-                  src={`assets/{style}/dockIcons/trash.png`}
+                  src={`assets/${style}/dockIcons/trash.png`}
                 />
               </div>
             </div>

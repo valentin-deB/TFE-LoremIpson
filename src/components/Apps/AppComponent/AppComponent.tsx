@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.scss';
+import './AppComponent.scss';
 import './styles/style-modernMac.scss';
 
 interface WindowProps {
@@ -8,7 +8,7 @@ interface WindowProps {
   name: string;
 }
 
-const App: React.FC<WindowProps> = ({ children, icon, name }) => {
+const AppComponent: React.FC<WindowProps> = ({ children, icon, name }) => {
   let wrappedChild;
 
   // App state
@@ -115,4 +115,4 @@ const App: React.FC<WindowProps> = ({ children, icon, name }) => {
   );
 };
 
-export default App;
+export default AppComponent;
