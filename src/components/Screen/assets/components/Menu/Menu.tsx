@@ -2,6 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./Menu.scss";
 import "./styles/style-modernMac.scss";
 
+//images import
+import logoLoremIpson from "./assets/style-modernMac/logoLoremIpson.png";
+import wifiIcon from "./assets/style-modernMac/wifiIcon.png";
+import controlCenterIcon from "./assets/style-modernMac/controlCenterIcon.png";
+import searchIcon from "./assets/style-modernMac/searchIcon.png";
+
+
 // interface MenuProps {
 //   windowId: string;
 //   currentStyle: string;
@@ -24,7 +31,7 @@ const [style, setStyle] = useState("style-modernMac");
                 <button className="c-menu-bar__btn js-menu-bar__logo">
                   <img
                     className="c-menu-bar__icon"
-                    src={`./assets/${style}/menuBarre/logoLoremIpson.png`}
+                    src={logoLoremIpson}
                     alt="logoLoremIpson"
                   />
                 </button>
@@ -65,7 +72,7 @@ const [style, setStyle] = useState("style-modernMac");
                 <button className="c-menu-bar__btn" data-menu-bar="Wifi">
                   <img
                     className="c-menu-bar__icon"
-                    src={`assets/${style}/menuBarre/wifiIcon.png`}
+                    src={wifiIcon}
                     alt="icon Wifi"
                   />
                 </button>
@@ -74,7 +81,7 @@ const [style, setStyle] = useState("style-modernMac");
                 <button className="c-menu-bar__btn" data-menu-bar="Search">
                   <img
                     className="c-menu-bar__icon"
-                    src={`assets/${style}/menuBarre/searchIcon.png`}
+                    src={searchIcon}
                     alt="icon Search"
                   />
                 </button>
@@ -86,7 +93,7 @@ const [style, setStyle] = useState("style-modernMac");
                 >
                   <img
                     className="c-menu-bar__icon"
-                    src={`assets/${style}/menuBarre/controlCenterIcon.png`}
+                    src={controlCenterIcon}
                     alt="icon Control center"
                   />
                 </button>
