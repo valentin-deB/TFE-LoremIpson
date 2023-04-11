@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './components/App'
 import interact from 'interactjs'
+import anime from 'animejs'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -55,7 +56,7 @@ interact('[data-drag="draggable"]').draggable({
  * @param {*} event
  */
 
-function dragMoveListener(event) {
+function dragMoveListener(event: any) {
   var target = event.target;
 
   target.setAttribute("data-state", "moving");
@@ -116,26 +117,27 @@ interact('[data-type="folder"]').dropzone({
   },
 });
 
+
 //=====================
 //=FolderWindow
 //=====================
 
 interact('[data-type="folderWindow"]').dropzone({
   accept: '[data-drop="droppable"]',
-  ondrop: function (event) {
-    let folderWindow = event.target;
-    let droppedElement = event.relatedTarget;
+  ondrop: function (event: Interact.DropzoneDropEvent) {
+    let folderWindow = event.target as HTMLElement;
+    let droppedElement = event.relatedTarget as HTMLElement;
     if (droppedElement != folderWindow.parent) {
       folderWindow.parent.filesContains.push(droppedElement);
       folderWindow.appendChild(droppedElement);
     }
   },
 
-  ondragleave: function (event) {
-    let folderWindow = event.target;
-    let droppedElement = event.relatedTarget;
-    let newParent = event._interaction._latestPointer.eventTarget;
-    let elementImg = droppedElement.querySelector(".c-desktop__icon-img");
+  ondragleave: function (event: Interact.DropzoneDragLeaveEvent) {
+    let folderWindow = event.target as HTMLElement;
+    let droppedElement = event.relatedTarget as HTMLElement;
+    let newParent = event._interaction._latestPointer.eventTarget as HTMLElement;
+    let elementImg = droppedElement.querySelector(".c-desktop__icon-img") as HTMLElement;
     if (newParent != elementImg) {
       newParent.appendChild(droppedElement);
       let filesContains = folderWindow.parent.filesContains;
@@ -151,32 +153,32 @@ interact('[data-type="folderWindow"]').dropzone({
 
 interact(".trash").dropzone({
   accept: ".trashdrop",
-  ondrop: function (event) {
+  ondrop: function (event: Interact.DropzoneDropEvent) {
     event.target.classList.add("drop-activated");
     event.relatedTarget.classList.add("dropped");
-    event.relatedTarget.style.opacity = 0;
+    event.relatedTarget.style.opacity = "0";
   },
 
-  ondragleave: function (event) {
+  ondragleave: function (event: Interact.DropzoneDragLeaveEvent) {
     event.target.classList.remove("drop-activated");
     event.relatedTarget.classList.remove("dropped");
-    event.target.parentElement.appendChild(event.relatedTarget);
+    event.target.parentElement?.appendChild(event.relatedTarget);
   },
 });
 
 // ipson system
 
-var onFocus;
-const container = document.querySelector(".js-container");
-const screen = document.querySelector(".js-screen");
-const layout = document.querySelector(".js-layout");
-const dock = document.querySelector(".js-dock");
-const dockActive = document.querySelector(".js-dock__active");
-const dockStatic = document.querySelector(".js-dock__static");
-const style1 = {};
+let onFocus: any;
+const container = document.querySelector(".js-container") as HTMLElement;
+const screen = document.querySelector(".js-screen") as HTMLElement;
+const layout = document.querySelector(".js-layout") as HTMLElement;
+const dock = document.querySelector(".js-dock") as HTMLElement;
+const dockActive = document.querySelector(".js-dock__active") as HTMLElement;
+const dockStatic = document.querySelector(".js-dock__static") as HTMLElement;
+const style1 = {} as {name: string; call: string};
 style1.name = "Modern Mac";
 style1.call = "modernMac";
-const style2 = {};
+const style2 = {} as {name: string; call: string};
 style2.name = "One Bit";
 style2.call = "1bit";
 var currentStyle = style1;
@@ -189,7 +191,6 @@ systemStart();
 
 function systemStart() {
   applyStyle(style1);
-  applyHour();
   setDesktop();
   animDock();
   addIteractivityToLayout();
@@ -207,7 +208,7 @@ function systemStart() {
 //mise en place du desktop
 //propriétés des éléments, sélection
 //ouvrir l'application au dblclick
-function setDesktop() {
+function setDesktop(): void {
   container.addEventListener("mousedown", function () {
     let previousSelection = document.querySelector(
       "[data-selection= selected]"
@@ -225,19 +226,19 @@ function setDesktop() {
 
   let allDeskelements = container.querySelectorAll(".js-desktop__element");
   allDeskelements.forEach((element) => {
-    element.style.left = myRandom(5, 85) + "vw";
-    element.style.top = myRandom(5, 70) + "vh";
+    element.style.left = `${myRandom(5, 85)}vw`;
+    element.style.top = `${myRandom(5, 70)}vh`;
     element.p = element.querySelector(".js-desktop__name");
     element.extention = element.dataset.extention;
     element.name = element.p.textContent;
-    element.p.textContent = element.name + element.extention;
+    element.p.textContent = `${element.name}${element.extention}`;
     element.icon = element.querySelector(".js-desktop__icon");
     element.iconImg = element.querySelector(".js-desktop__icon-img");
     element.type = element.dataset.type;
     element.addEventListener("mouseup", function (evt) {
       addSelect(evt);
     });
-    if ((element.type = "folder")) {
+    if (element.type == "folder") {
       setFolder(element);
     }
     element.addEventListener("dblclick", function (evt) {
@@ -247,37 +248,38 @@ function setDesktop() {
   });
 }
 
-function removeSelect(previousSelection) {
+function removeSelect(previousSelection: HTMLElement): void {
   previousSelection.icon.classList.remove("sate__selected-icon");
   previousSelection.p.classList.remove("sate__selected-p");
-  previousSelection.removeAttribute("data-selection", "selected");
+  previousSelection.removeAttribute("data-selection");
 }
 
-function addSelect(evt) {
-  let element = evt.currentTarget;
+function addSelect(evt: MouseEvent): void {
+  let element = evt.currentTarget as HTMLElement;
   element.icon.classList.add("sate__selected-icon");
   element.p.classList.add("sate__selected-p");
   element.setAttribute("data-selection", "selected");
 }
 
-function removeOpenSelect(previousSelection) {
+function removeOpenSelect(previousSelection: HTMLElement): void {
   previousSelection.removeAttribute("data-selection");
   previousSelection.icon.classList.remove("sate__selected-icon");
   previousSelection.p.classList.remove("sate__selected-p--open");
 }
 
-function addOpenSelect(evt) {
-  let element = evt.currentTarget;
+function addOpenSelect(evt: MouseEvent): void {
+  let element = evt.currentTarget as HTMLElement;
   removeSelect(element);
   element.icon.classList.add("sate__selected-icon");
   element.p.classList.add("sate__selected-p--open");
   element.setAttribute("data-selection", "open");
 }
 
-//proprités propres à un dossier
-function setFolder(folder) {
+function setFolder(folder: HTMLElement & { filesContains?: HTMLElement[] }): void {
   folder.filesContains = [];
 }
+
+
 
 //================
 //= Layout
@@ -509,102 +511,3 @@ function applyStyle(myNewStyle) {
   currentStyle = myNewStyle;
 }
 
-//================
-//= Dock
-//================
-//dock animation
-
-//observe uand une icone est ajoutée au dock afin de l'ajouter au cycle d'animation
-let observer = new MutationObserver((reccordedMutations) => {
-  reccordedMutations.forEach((mutation) => {
-    mutation.addedNodes.forEach((app) => {
-      let appIcon = app.querySelector(".js-dock__icon");
-      animDockAddEvtList(appIcon);
-      appIcon.style.transform = "scale(1)";
-    });
-  });
-});
-
-// observe everything except attributes
-observer.observe(dockActive, {
-  childList: true, // observe direct children
-  subtree: true, // and lower descendants too
-});
-
-//met en place l'animation de base
-function animDock() {
-  let dockApps = dock.querySelectorAll(".js-dock__icon");
-  let arrDockApps = Array.from(dockApps);
-  arrDockApps.forEach((dockApp) => {
-    animDockAddEvtList(dockApp);
-  });
-}
-//ajoute un addEvtListener a l'application qu'on lui passe (important quand on hide une app)
-function animDockAddEvtList(app) {
-  app.addEventListener("mouseenter", (evt) => {
-    addAnim(evt, iconAnimDockIn);
-  });
-  app.addEventListener("mouseleave", (evt) => {
-    addAnim(evt, iconAnimDockOut);
-  });
-}
-
-function addAnim(evt, iconAnimDock) {
-  let dockAppsDyn = dock.querySelectorAll(".js-dock__icon");
-  let arrDockAppsDyn = Array.from(dockAppsDyn);
-  let currentApp = arrDockAppsDyn.indexOf(evt.currentTarget);
-  let appBefore = arrDockAppsDyn.at(currentApp - 1);
-  let appAfter = arrDockAppsDyn.at(currentApp + 1);
-  if (currentApp == 0) {
-    appBefore = null;
-  }
-  iconAnimDock(appBefore, evt.currentTarget, appAfter);
-}
-
-function iconAnimDockIn(appBefore, currentApp, appAfter) {
-  animeJsTarget(currentApp, 1.3);
-  animeJsTarget(appBefore, 1.1);
-  animeJsTarget(appAfter, 1.1);
-}
-function iconAnimDockOut(appBefore, currentApp, appAfter) {
-  animeJsTarget(currentApp, 1);
-  animeJsTarget(appBefore, 1);
-  animeJsTarget(appAfter, 1);
-}
-
-function animeJsTarget(target, scale) {
-  anime({
-    targets: target,
-    scale: scale,
-    duration: 10,
-    easing: "easeInOutSine",
-  });
-}
-
-//================
-//= Hour menu bar
-//================
-
-//apply hour on the element hour
-function applyHour() {
-  let hour = document.querySelector(".js-mennubar__btn--hour");
-  hour.textContent = getHour();
-  setTimeout(applyHour, 1000);
-}
-
-//get the hour with Date()
-function getHour() {
-  const d = new Date();
-  let hour = d.getHours();
-  hour = formatHour(hour);
-  let minute = d.getMinutes();
-  minute = formatHour(minute);
-  let finalHour = hour + ":" + minute;
-  return finalHour;
-}
-
-//put a 0 before numbers <10 (9:4) => (09:04)
-function formatHour(hour) {
-  let result = ("0" + hour).slice(-2);
-  return result;
-}

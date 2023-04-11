@@ -4,6 +4,7 @@ import "./styles/style-modernMac.scss";
 
 //assets
 import Menu from "./assets/components/Menu/Menu";
+import Dock from "./assets/components/Dock/Dock";
 
 //apps
 import Calculator from "../Apps/Calculator/Calculator";
@@ -90,102 +91,7 @@ const Screen = () => {
               </div>
             </div>
           </div>
-          <div className="c-dock js-dock">
-            <div className="c-dock__static js-dock__static">
-              <div
-                data-application-name="Finder"
-                className="c-dock__app js-dock__app c-dock__app--active"
-              >
-                <img
-                  className="c-dock__icon js-dock__icon"
-                  src={`./assets/${style}/dockIcons/finder.png`}
-                />
-              </div>
-              <div
-                className="c-dock__app js-dock__app"
-                data-application-name="System preferences"
-              >
-                <img
-                  className="c-dock__icon js-dock__icon"
-                  src={`./assets/${style}/dockIcons/preferences.png`}
-                />
-              </div>
-              <div
-                data-application-name="App Store"
-                className="c-dock__app js-dock__app"
-              >
-                <img
-                  className="c-dock__icon js-dock__icon"
-                  src={`./assets/${style}/dockIcons/appStore.png`}
-                />
-              </div>
-              <div
-                data-application-name="Camera"
-                className="c-dock__app js-dock__app"
-              >
-                <img
-                  className="c-dock__icon js-dock__icon"
-                  src={`./assets/${style}/dockIcons/camera.png`}
-                />
-              </div>
-              <div
-                data-application-name="Photos"
-                className="c-dock__app js-dock__app"
-              >
-                <img
-                  className="c-dock__icon js-dock__icon"
-                  src={`./assets/${style}/dockIcons/photo.png`}
-                />
-              </div>
-              <div
-                className="c-dock__app js-dock__app"
-                data-application-name="Mail"
-              >
-                <img
-                  className="c-dock__icon js-dock__icon"
-                  src={`./assets/${style}/dockIcons/mail.png`}
-                />
-              </div>
-              <div
-                className="c-dock__app js-dock__app"
-                data-application-name="Calculator"
-              >
-                <img
-                  className="c-dock__icon js-dock__icon"
-                  src={`./assets/${style}/dockIcons/calculator.png`}
-                />
-              </div>
-              <div
-                data-application-name="Chrome"
-                className="c-dock__app js-dock__app"
-              >
-                <img
-                  className="c-dock__icon js-dock__icon"
-                  src={`./assets/${style}/dockIcons/chrome.png`}
-                />
-              </div>
-              <div
-                data-application-name="Figma"
-                className="c-dock__app js-dock__app"
-              >
-                <img
-                  className="c-dock__icon js-dock__icon"
-                  src={`./assets/${style}/dockIcons/figma.png`}
-                />
-              </div>
-            </div>
-            <div className="c-dock__active js-dock__active">
-              <div
-                data-application-name="Trash"
-                className="c-dock__app js-dock__app"
-              >
-                <img
-                  className="c-dock__icon js-dock__icon"
-                  src={`./assets/${style}/dockIcons/trash.png`}
-                />
-              </div>
-            </div>
-          </div>
+          <Dock></Dock>
       </div>
   );
 }
