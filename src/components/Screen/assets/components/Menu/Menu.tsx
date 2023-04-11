@@ -2,26 +2,43 @@ import React, { useState, useEffect } from "react";
 import "./Menu.scss";
 import "./styles/style-modernMac.scss";
 
-//images import
+// images import
 import logoLoremIpson from "./assets/style-modernMac/logoLoremIpson.png";
 import wifiIcon from "./assets/style-modernMac/wifiIcon.png";
 import controlCenterIcon from "./assets/style-modernMac/controlCenterIcon.png";
 import searchIcon from "./assets/style-modernMac/searchIcon.png";
 
+const Menu: React.FC = () => {
+  const [time, setTime] = useState(new Date());
+  const [style, setStyle] = useState("style-modernMac");
 
-// interface MenuProps {
-//   windowId: string;
-//   currentStyle: string;
-// }
+  // Hour and date update
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date());
+    }, 60000); // Update every 60,000 ms (1 minute)
 
-// const Menu: React.FC<MenuProps> = ({
-const Menu: React.FC = ({
+    // Clean up the interval when the component is unmounted
+    return () => clearInterval(timer);
+  }, []);
 
-}) => {
+  // Format the time as HH:mm
+  const formattedTime = `${time
+    .getHours()
+    .toString()
+    .padStart(2, "0")}:${time
+    .getMinutes()
+    .toString()
+    .padStart(2, "0")}`;
 
-const [style, setStyle] = useState("style-modernMac");
+  // Format the date as EEE dd MMM
+  const formattedDate = time.toLocaleDateString("en-US", {
+    weekday: "short",
+    day: "2-digit",
+    month: "short",
+  });
 
-  //App render
+//App render
 
   return (  
         <>
@@ -100,7 +117,7 @@ const [style, setStyle] = useState("style-modernMac");
               </li>
               <li className="c-menu-bar__item" data-menu-bar="Date">
                 <button className="c-menu-bar__btn js-mennubar__btn--date c-mennubar__btn--date">
-                  Sat 25 Jun
+                {formattedDate}
                 </button>
               </li>
               <li className="c-menu-bar__item">
@@ -108,7 +125,7 @@ const [style, setStyle] = useState("style-modernMac");
                   className="c-menu-bar__btn js-mennubar__btn--hour"
                   data-menu-bar="Hour"
                 >
-                  17:13
+                  {formattedTime}
                 </button>
               </li>
             </ul>
