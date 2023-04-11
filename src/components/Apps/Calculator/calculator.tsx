@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Calculator.scss";
 import "./styles/style-modernMac.scss";
-import Window from "../AppComponent/AppComponent";
-import icon from "./assets/calculator.png";
-import App from "../AppComponent/AppComponent";
+import appIcon from "./assets/calculator.png";
+import App from "../../global/appWindow/AppWindow";
+import AppWindow from "../../global/appWindow/AppWindow";
 
 interface CalculatorProps {
   windowId: string;
@@ -14,8 +14,8 @@ const Calculator: React.FC<CalculatorProps> = ({
   windowId,
   currentStyle,
 }) => {
-  const Icon = <img src={icon} className="c-dock__icon js-dock__icon" alt="App Icon" />;
-  const Name = "Calculator";
+  const icon = <img src={appIcon} className="c-dock__icon js-dock__icon" alt="App Icon" />;
+  const name = "Calculator";
 
   // Calculator state
   const [currentOperand, setCurrentOperand] = useState("");
@@ -23,7 +23,7 @@ const Calculator: React.FC<CalculatorProps> = ({
   const [operation, setOperation] = useState<string | undefined>(undefined);
 
 
-  //Calculator functions
+//Calculator functions
   useEffect(() => {
     updateDisplay();
   }, [currentOperand, previousOperand, operation]);
@@ -131,7 +131,7 @@ const Calculator: React.FC<CalculatorProps> = ({
   //App render
 
   return (    
-      <App icon={Icon} name={Name}>
+      <AppWindow icon={icon} name={name}>
         <div className="c-calculator">
           <div className="c-calculator__screen">
             <div data-previous-operand className="c-screen__previous">
@@ -160,7 +160,7 @@ const Calculator: React.FC<CalculatorProps> = ({
           <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>.</button>
           <button className="c-calculator__btn c-span--two c-calculator__btn--equals" onClick={handleEqualsClick}>=</button>
         </div>
-      </App>
+      </AppWindow>
   );
 };
 

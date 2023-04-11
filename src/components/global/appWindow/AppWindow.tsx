@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import './AppComponent.scss';
+import './AppWindow.scss';
 import './styles/style-modernMac.scss';
 
-interface WindowProps {
+interface AppWindowProps {
   children: React.ReactElement;
   icon: React.ReactNode;
   name: string;
 }
 
-const AppComponent: React.FC<WindowProps> = ({ children, icon, name }) => {
+const AppWindow: React.FC<AppWindowProps> = ({ children, icon, name }) => {
   let wrappedChild;
 
   // App state
@@ -37,7 +37,7 @@ const AppComponent: React.FC<WindowProps> = ({ children, icon, name }) => {
       </div>
     ) : (
       <div className={"c-window " + name} data-type="window" data-drag="draggable-dragger">
-          <div className="c-window__head js-window__head">
+          <div data-drag="dragger" className="c-window__head js-window__head">
             <ul className="c-window__controls">
               <li>
                 <button
@@ -107,7 +107,7 @@ const AppComponent: React.FC<WindowProps> = ({ children, icon, name }) => {
             </ul>
           </div>
           <div className="c-window__content js-window__content">
-            {React.cloneElement(children)}
+            {children}
           </div>
       </div>
     )}
@@ -115,4 +115,4 @@ const AppComponent: React.FC<WindowProps> = ({ children, icon, name }) => {
   );
 };
 
-export default AppComponent;
+export default AppWindow;

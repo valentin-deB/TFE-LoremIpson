@@ -3,11 +3,11 @@ import "./Screen.scss";
 import "./styles/style-modernMac.scss";
 
 //assets
-import Menu from "./assets/components/Menu/Menu";
-import Dock from "./assets/components/Dock/Dock";
+import Menu from "./assets/components/menu/Menu";
+import Dock from "./assets/components/dock/Dock";
 
 //apps
-import Calculator from "../Apps/Calculator/Calculator";
+import Calculator from "../Apps/calculator/Calculator";
 
 var style:string = "style-modernMac";
 
@@ -16,7 +16,7 @@ const Screen = () => {
   return(
         <div className="c-screen js-screen">
           <div className="c-screen__overlay js-screen__overlay"></div>
-          <Menu></Menu>
+          <Menu/>
           <div className="o-container js-container">
             <Calculator windowId='1' currentStyle='ModernMac'/>
             <div className="c-desktop js-desktop">

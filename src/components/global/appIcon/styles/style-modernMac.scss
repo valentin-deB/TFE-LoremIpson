@@ -11,9 +11,15 @@
   background-color: #3D3C3C;
 }
 
-.c-window__contols:hover .c-window__control-icon{
-  transform: translate3d(0,0,0) rotate(0);
-  transition: transform 0.25s ease-in-out;
+// .c-window__contols:hover .c-window__control-icon{
+//   transform: translate3d(0,0,0) rotate(0);
+//   transition: transform 0.25s ease-in-out;
+// }
+
+.c-window__control{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .c-window__control-icon{
@@ -21,8 +27,8 @@
   width: 70%;
   height: auto;
   opacity: 70%;
-  transform: translate3d(0,12px,0) rotate(-145deg);
-  transition: transform 0.25s ease-in-out;
+  // transform: translate3d(0,12px,0) rotate(-145deg);
+  // transition: transform 0.25s ease-in-out;
 }
 
 .c-window__control--quit{
