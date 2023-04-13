@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Appicon.scss';
 import './styles/style-modernMac.scss';
-import { getApplicationByID } from '../AppManager';
+import { getApplicationByID, openAppByID} from '../AppManager';
 
 interface AppIconrops {
   name: string;
@@ -9,15 +9,12 @@ interface AppIconrops {
 }
 
 const Appicon: React.FC<AppIconrops> = ({name, dock}) => {
-
-  // App state
-  // const [isMinimized, setIsMinimized] = useState(true);
+  
   const iconPath = getApplicationByID(name).icon;
 
   //App functions
  function openApp() {
-    console.log("open app")
-    
+    openAppByID(name);
   }
 
   return (

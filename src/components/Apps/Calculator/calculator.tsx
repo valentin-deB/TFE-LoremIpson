@@ -161,6 +161,4 @@ const Calculator: React.FC<CalculatorProps> = ({
   );
 };
 
-export const name = "calculator";
-
 export default Calculator;

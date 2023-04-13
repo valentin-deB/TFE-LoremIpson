@@ -1,6 +1,8 @@
 import React from "react";
 import "./Screen.scss";
 import "./styles/style-modernMac.scss";
+import OpenedApps from "../global/OpenedApps";
+import { getApplicationByID } from "../global/AppManager";
 
 //assets
 import Menu from "./assets/components/menu/Menu";
@@ -8,19 +10,18 @@ import Dock from "./assets/components/dock/Dock";
 
 //apps
 import AppIcon from "../global/appIcon/AppIcon";
-import Calculator from "../Apps/calculator/Calculator";
+// import Calculator from "../Apps/calculator/Calculator";
 
 var style:string = "style-modernMac";
 
-const Screen = () => {
-  
+const Screen = () => {  
   return(
         <div className="c-screen js-screen">
           <div className="c-screen__overlay js-screen__overlay"></div>
           <Menu/>
           <div className="o-container js-container">
+            <OpenedApps/>
             <AppIcon name="Calculator" dock={false} />
-            <Calculator/>
             <div className="c-desktop js-desktop">
               <div
                 className="c-desktop__element js-desktop__element"
