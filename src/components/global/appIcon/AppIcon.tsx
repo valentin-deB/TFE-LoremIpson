@@ -1,46 +1,48 @@
 import React, { useState } from 'react';
-import './AppComponent.scss';
+import './Appicon.scss';
 import './styles/style-modernMac.scss';
+import { getApplicationByID } from '../AppManager';
 
-interface WindowProps {
-  icon: React.ReactNode;
+interface AppIconrops {
   name: string;
-  place: string;
+  dock: boolean;
 }
 
-const AppComponent: React.FC<WindowProps> = ({ icon, name, place}) => {
+const Appicon: React.FC<AppIconrops> = ({name, dock}) => {
 
   // App state
-  const [isMinimized, setIsMinimized] = useState(true);
+  // const [isMinimized, setIsMinimized] = useState(true);
+  const iconPath = getApplicationByID(name).icon;
 
   //App functions
  function openApp() {
     console.log("open app")
+    console.log(getApplicationByID(name))
   }
 
   return (
     <>
-      {place === "dock" ? (
+      {dock ? (
         // dock icon
         <div
           className="c-dock__app js-dock__app"
           data-application-name={name}
           onClick={openApp}
         >
-          {icon}
+          <img src={iconPath} className="c-dock__icon js-dock__icon" alt="App Icon" />
         </div>
-      ) : place === "desk" ? (
+      ) : (
         // desktop icon
         <div
           className="c-desktop__app"
           data-application-name={name}
           onClick={openApp}
         >
-          {icon}
+          <img src={iconPath} className="c-dock__icon js-dock__icon" alt="App Icon" />
         </div>
-      ) : null}
+      )}
     </>
   );
 };
 
-export default AppComponent;
+export default Appicon;

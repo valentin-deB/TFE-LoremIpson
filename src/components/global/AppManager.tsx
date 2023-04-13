@@ -7,7 +7,7 @@ const applications = new Map();
 //has pour lui demander si il l'a
 
 //déclarer chaque nouvelle app ici
-applications.set("calculator name", {icon: "Calculator icon path", component:Calculator })
+applications.set("calculator", {icon: "/public/appIcons/calculator.png", component:Calculator })
 applications.set("default", {icon:"path", component:(<div></div>) })
 
 
