@@ -6,13 +6,10 @@ import App from "../../global/appWindow/AppWindow";
 import AppWindow from "../../global/appWindow/AppWindow";
 
 interface CalculatorProps {
-  windowId: string;
-  currentStyle: string;
+  // 
 }
 
 const Calculator: React.FC<CalculatorProps> = ({
-  windowId,
-  currentStyle,
 }) => {
   const icon = <img src={appIcon} className="c-dock__icon js-dock__icon" alt="App Icon" />;
   const name = "Calculator";
@@ -131,7 +128,7 @@ const Calculator: React.FC<CalculatorProps> = ({
   //App render
 
   return (    
-      <AppWindow icon={icon} name={name}>
+      <AppWindow>
         <div className="c-calculator">
           <div className="c-calculator__screen">
             <div data-previous-operand className="c-screen__previous">
@@ -163,5 +160,7 @@ const Calculator: React.FC<CalculatorProps> = ({
       </AppWindow>
   );
 };
+
+export const name = "calculator";
 
 export default Calculator;

@@ -19,8 +19,8 @@ const Screen = () => {
           <div className="c-screen__overlay js-screen__overlay"></div>
           <Menu/>
           <div className="o-container js-container">
-            <AppIcon name="calculator" dock={false} />
-            <Calculator windowId='1' currentStyle='ModernMac'/>
+            <AppIcon name="Calculator" dock={false} />
+            <Calculator/>
             <div className="c-desktop js-desktop">
               <div
                 className="c-desktop__element js-desktop__element"

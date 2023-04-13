@@ -17,7 +17,7 @@ const Appicon: React.FC<AppIconrops> = ({name, dock}) => {
   //App functions
  function openApp() {
     console.log("open app")
-    console.log(getApplicationByID(name))
+    
   }
 
   return (
