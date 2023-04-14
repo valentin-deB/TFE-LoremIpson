@@ -2,11 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './components/App'
 import interact from 'interactjs'
-import anime from 'animejs'
+import { OpenedAppsProvider } from './components/global/OpenAppsProvider'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <App />
+     <OpenedAppsProvider>
+      <App />
+    </OpenedAppsProvider>
   </React.StrictMode>,
 )
 

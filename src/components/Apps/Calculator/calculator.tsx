@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Calculator.scss";
 import "./styles/style-modernMac.scss";
-import appIcon from "./assets/calculator.png";
-import App from "../../global/appWindow/AppWindow";
 import AppWindow from "../../global/appWindow/AppWindow";
 
 interface CalculatorProps {

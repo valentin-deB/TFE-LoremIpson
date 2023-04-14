@@ -7,7 +7,7 @@ import { getApplicationByID } from "../global/AppManager";
 //assets
 import Menu from "./assets/components/menu/Menu";
 import Dock from "./assets/components/dock/Dock";
-import { OpenedApps } from "../global/openedApps/OpenedApps";
+import OpenedApps  from "../global/openedApps/OpenedApps";
 
 //apps
 import AppIcon from "../global/appIcon/AppIcon";
