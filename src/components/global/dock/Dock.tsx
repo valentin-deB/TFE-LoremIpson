@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Dock.scss";
 import "./styles/style-modernMac.scss";
+import AppIcon from "../appIcon/AppIcon";
+
 import anime from "animejs";
 
 const Dock: React.FC = () => {
@@ -90,6 +92,7 @@ const Dock: React.FC = () => {
   return (  
         <>
           <div className="c-dock js-dock">
+            <AppIcon name="Calculator" dock={true} />
             <div className="c-dock__static js-dock__static">
               <div
                 data-application-name="Finder"

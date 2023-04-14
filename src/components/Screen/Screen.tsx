@@ -9,9 +9,6 @@ import Menu from "../global/menu/Menu";
 import Dock from "../global/dock/Dock";
 import OpenedApps  from "../global/openedApps/OpenedApps";
 
-//apps
-import AppIcon from "../global/appIcon/AppIcon";
-// import Calculator from "../Apps/calculator/Calculator";
 
 var style:string = "style-modernMac";
 
@@ -21,9 +18,7 @@ const Screen = () => {
           <div className="c-screen__overlay js-screen__overlay"></div>
           <Menu/>
           <div className="o-container js-container">
-            <OpenedApps/>
-            <AppIcon name="Calculator" dock={false} />
-            
+            <OpenedApps/>            
             <div className="c-desktop js-desktop">
               <div
                 className="c-desktop__element js-desktop__element"

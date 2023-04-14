@@ -2,15 +2,11 @@ import React from "react";
 import { useOpenedApps } from "../OpenAppsProvider";
 import AppWindow from "../appWindow/AppWindow";
 
+import "./OpenedApps.scss";
 
-interface OpenedAppsProps {
-  // add props here
-}
 
-const OpenedApps: React.FC<OpenedAppsProps> = (
-  {
-    // add props here
-  }
+const OpenedApps: React.FC = (
+  
 ) => {
   const { openedApps } = useOpenedApps();
 

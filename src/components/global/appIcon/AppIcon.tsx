@@ -23,7 +23,7 @@ const Appicon: React.FC<AppIconProps> = ({ name, dock }) => {
       {dock ? (
         // dock icon
         <div
-          className="c-dock__app js-dock__app"
+          className="c-dock__app"
           data-application-name={name}
           onClick={openApp}
         >
@@ -36,7 +36,7 @@ const Appicon: React.FC<AppIconProps> = ({ name, dock }) => {
           data-application-name={name}
           onClick={openApp}
         >
-          <img src={iconPath} className="c-dock__icon js-dock__icon" alt="App Icon" />
+          <img src={iconPath} className="c-desktop__icon" alt="App Icon" />
         </div>
       )}
     </>
