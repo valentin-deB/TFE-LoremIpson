@@ -11,8 +11,6 @@ interface CalculatorProps {
 
 const Calculator: React.FC<CalculatorProps> = ({
 }) => {
-  const icon = <img src={appIcon} className="c-dock__icon js-dock__icon" alt="App Icon" />;
-  const name = "Calculator";
 
   // Calculator state
   const [currentOperand, setCurrentOperand] = useState("");

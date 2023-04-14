@@ -1,12 +1,13 @@
 import React from "react";
 import "./Screen.scss";
 import "./styles/style-modernMac.scss";
-import OpenedApps from "../global/OpenedApps";
+
 import { getApplicationByID } from "../global/AppManager";
 
 //assets
 import Menu from "./assets/components/menu/Menu";
 import Dock from "./assets/components/dock/Dock";
+import { OpenedApps } from "../global/openedApps/OpenedApps";
 
 //apps
 import AppIcon from "../global/appIcon/AppIcon";
@@ -22,6 +23,7 @@ const Screen = () => {
           <div className="o-container js-container">
             <OpenedApps/>
             <AppIcon name="Calculator" dock={false} />
+            
             <div className="c-desktop js-desktop">
               <div
                 className="c-desktop__element js-desktop__element"

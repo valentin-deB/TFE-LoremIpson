@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
+// Appicon.tsx
+import React from 'react';
 import './Appicon.scss';
 import './styles/style-modernMac.scss';
-import { getApplicationByID, openAppByID} from '../AppManager';
+import { getApplicationByID } from '../AppManager';
+import { useOpenedApps } from '../openedApps/OpenedApps';
 
-interface AppIconrops {
+interface AppIconProps {
   name: string;
   dock: boolean;
 }
 
-const Appicon: React.FC<AppIconrops> = ({name, dock}) => {
+const Appicon: React.FC<AppIconProps> = ({name, dock}) => {
   
   const iconPath = getApplicationByID(name).icon;
+  const { addNewOpenedApp } = useOpenedApps();
 
   //App functions
- function openApp() {
-    openAppByID(name);
+  function openApp() {
+    console.log("open app")
+    const app = getApplicationByID(name);
+    addNewOpenedApp(app.component);
   }
 
   return (
