@@ -10,7 +10,6 @@ const Dock: React.FC = () => {
   const dockActive = document.querySelector(".js-dock__active") as HTMLElement;
   const dockStatic = document.querySelector(".js-dock__static") as HTMLElement; 
 
-
 // //================
 // //= Dock interractivity
 // //================

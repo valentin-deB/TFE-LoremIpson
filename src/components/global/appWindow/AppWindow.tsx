@@ -1,21 +1,30 @@
 import React, { useState } from 'react';
 import './AppWindow.scss';
-import './styles/style-modernMac.scss';
+import { getApplicationByID } from "../AppManager";
+import { useOpenedApps } from "../OpenAppsProvider";
 
 interface AppWindowProps {
   children: React.ReactElement;
+  id: string;
 }
 
-const AppWindow: React.FC<AppWindowProps> = ({ children}) => {
+const AppWindow: React.FC<AppWindowProps> = ({ children, id}) => {
+  const name = id;
+  const { removeOpenedApp } = useOpenedApps();
+
+  function closeApp() {
+    const app = getApplicationByID(name);
+    removeOpenedApp(app.name);
+  }
 
   return (
-    <div className="c-window " data-type="window" data-drag="draggable-dragger">
+    <div className={"c-window " + id} data-type="window" data-drag="draggable-dragger">
         <div data-drag="dragger" className="c-window__head js-window__head">
           <ul className="c-window__controls">
             <li>
               <button
                 className="c-window__control c-window__control--quit"
-                onClick={() => console.log('quit')}
+                onClick={closeApp}
               >
                 <svg   
                   className="c-window__control-icon"

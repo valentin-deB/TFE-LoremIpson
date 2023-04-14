@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./Calculator.scss";
 import "./styles/style-modernMac.scss";
-import AppWindow from "../../global/appWindow/AppWindow";
 
 interface CalculatorProps {
-  // 
+  id: string;
 }
 
 const Calculator: React.FC<CalculatorProps> = ({
+  id,
 }) => {
 
-  // Calculator state
   const [currentOperand, setCurrentOperand] = useState("");
   const [previousOperand, setPreviousOperand] = useState("");
   const [operation, setOperation] = useState<string | undefined>(undefined);
@@ -124,36 +123,34 @@ const Calculator: React.FC<CalculatorProps> = ({
   //App render
 
   return (    
-      <AppWindow>
-        <div className="c-calculator">
-          <div className="c-calculator__screen">
-            <div data-previous-operand className="c-screen__previous">
-              {updateDisplay()}
-            </div>
-            <div data-current-operand className="c-screen__current">
-              {getDisplayNumber(currentOperand)}
-            </div>
-          </div>
-          <button className="c-calculator__btn c-span--two" onClick={handleAllClearClick}>AC</button>
-          <button className="c-calculator__btn" onClick={handleDeleteClick}>DEL</button>
-          <button className="c-calculator__btn" onClick={(e) => handleOperationClick(e)}>÷</button>
-          <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>1</button>
-          <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>2</button>
-          <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>3</button>
-          <button className="c-calculator__btn" onClick={(e) => handleOperationClick(e)}>*</button>
-          <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>4</button>
-          <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>5</button>
-          <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>6</button>
-          <button className="c-calculator__btn" onClick={(e) => handleOperationClick(e)}>-</button>
-          <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>7</button>
-          <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>8</button>
-          <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>9</button>
-          <button className="c-calculator__btn" onClick={(e) => handleOperationClick(e)}>+</button>
-          <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>0</button>
-          <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>.</button>
-          <button className="c-calculator__btn c-span--two c-calculator__btn--equals" onClick={handleEqualsClick}>=</button>
+    <div className="c-calculator">
+      <div className="c-calculator__screen">
+        <div data-previous-operand className="c-screen__previous">
+          {updateDisplay()}
         </div>
-      </AppWindow>
+        <div data-current-operand className="c-screen__current">
+          {getDisplayNumber(currentOperand)}
+        </div>
+      </div>
+      <button className="c-calculator__btn c-span--two" onClick={handleAllClearClick}>AC</button>
+      <button className="c-calculator__btn" onClick={handleDeleteClick}>DEL</button>
+      <button className="c-calculator__btn" onClick={(e) => handleOperationClick(e)}>÷</button>
+      <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>1</button>
+      <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>2</button>
+      <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>3</button>
+      <button className="c-calculator__btn" onClick={(e) => handleOperationClick(e)}>*</button>
+      <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>4</button>
+      <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>5</button>
+      <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>6</button>
+      <button className="c-calculator__btn" onClick={(e) => handleOperationClick(e)}>-</button>
+      <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>7</button>
+      <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>8</button>
+      <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>9</button>
+      <button className="c-calculator__btn" onClick={(e) => handleOperationClick(e)}>+</button>
+      <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>0</button>
+      <button className="c-calculator__btn" onClick={(e) => handleNumberClick(e)}>.</button>
+      <button className="c-calculator__btn c-span--two c-calculator__btn--equals" onClick={handleEqualsClick}>=</button>
+    </div>
   );
 };
 

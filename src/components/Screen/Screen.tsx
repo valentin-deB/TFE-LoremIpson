@@ -5,8 +5,8 @@ import "./styles/style-modernMac.scss";
 import { getApplicationByID } from "../global/AppManager";
 
 //assets
-import Menu from "./assets/components/menu/Menu";
-import Dock from "./assets/components/dock/Dock";
+import Menu from "../global/menu/Menu";
+import Dock from "../global/dock/Dock";
 import OpenedApps  from "../global/openedApps/OpenedApps";
 
 //apps
