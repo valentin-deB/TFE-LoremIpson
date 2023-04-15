@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./Calculator.scss";
-import "./styles/style-modernMac.scss";
 
 interface CalculatorProps {
-  id: string;
 }
 
 const Calculator: React.FC<CalculatorProps> = ({
-  id,
-}) => {
 
+}) => {
   const [currentOperand, setCurrentOperand] = useState("");
   const [previousOperand, setPreviousOperand] = useState("");
   const [operation, setOperation] = useState<string | undefined>(undefined);
-
 
 //Calculator functions
   useEffect(() => {

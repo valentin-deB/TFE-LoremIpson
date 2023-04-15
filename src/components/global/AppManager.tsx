@@ -1,23 +1,35 @@
-import { useState } from "react";
-
-//importer toutes les apps
+// Import all apps
+import Figma from "../Apps/figma/Figma";
 import Calculator from "../Apps/calculator/Calculator";
+import Trash from "../Apps/trash/Trash";
 
-//déclarer chaque nouvelle app ici
-const allApplicationsList = [Calculator]
+// Declare arrays of apps
+export const dockApps = [Calculator, Figma];
+export const dockAppsActives = [Trash];
 
+// Combine arrays of apps
+const allApplicationsList = [...dockApps, ...dockAppsActives];
 
-//GetApplicationByID
-
+// Initialize map of applications
 const applications = new Map();
 
+// Add each application to the map
 allApplicationsList.forEach((app)=>{
-    //on ajoute l'application dans la map
-    applications.set(app.name, {icon: "/public/appIcons/modernMac/" + app.name + ".png", component:app, name:app.name })
-})
-applications.set("default", {icon:"path", component:(<div>Pas d'app</div>) })
+    // Add the application to the map
+    applications.set(app.name, {
+        icon: "/public/appIcons/modernMac/" + app.name + ".png",
+        component: app,
+        name: app.name
+    });
+});
 
+// Add a default application to the map
+applications.set("default", {
+    icon: "path",
+    component: (<div>Pas d'app</div>),
+});
 
-export function getApplicationByID(id:string){
+// Define a function to get an application by ID
+export function getApplicationByID(id: string) {
     return applications.has(id) ? applications.get(id) : applications.get("default");
 }
